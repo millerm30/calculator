@@ -1,0 +1,92 @@
+* {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: #131313;
+    max-width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 35px;
+    border-radius: 10px;
+    user-select: none;
+}
+
+h4 {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+#Display-area {
+    width: 100%;
+    margin: 3vh 0;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(2, minmax(40px, auto));
+    word-wrap: break-word;
+    padding-bottom: 20px;
+    border-bottom: 1px #f5e5e51e solid;
+}
+
+#Display-area .currentInput {
+    text-align: right;
+    height: 8vh;
+    color: #ffffff;
+    font-size: xx-large;
+    line-height: 2;
+    word-wrap: break-word;
+}
+
+#Display-area .answerScreen {
+    text-align: right;
+    color: #ffffff;
+    height: 7px;
+    line-height: 3;
+    font-size: larger;
+}
+
+.keypad-btns {
+    display: grid;
+    grid: repeat(5, 50px) / repeat(4, 50px);
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+}
+
+.keypad-btns button {
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background-color: #131313;
+    color: #ffffff;
+    font-size: x-large;
+}
+
+.keypad-btns .fun_btn {
+    color: #ff8800;
+}
+
+.num_btn:hover,
+.fun_btn:hover {
+    background-color: #1d1d1dfa;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: #131313;
+        align-items: flex-start;
+    }
+}
