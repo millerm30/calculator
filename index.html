@@ -2,14 +2,18 @@
 <html lang="en">
     <head>
         <title>Calculator App</title>
-        <meta name="author" content="Michael Miller">
         <meta charset="UTF-8">
+        <meta name="author" content="Michael Miller">
+        <link rel="shortcut icon" href="images/calculator.ico" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="styles.css" rel="stylesheet">
+        <link href="stylesheets/styles.css" rel="stylesheet">
     </head>
     <body>
         <div class="container">
-            <h4>Calculator</h4>
+            <div class="header_content">
+                <img src="images/calculator.png" alt="Calculator" width="30px">
+                <h4>Calculator<span class="appName"><sup>App</sup></span></h4>
+            </div>
             <section id="Display-area">
                 <div class="currentInput"></div>
                 <div class="answerScreen">0</div>
@@ -39,6 +43,6 @@
                 <button type="button" class="fun_btn" id="evaluate" value="">=</button>
             </section>
         </div>
-        <script src="script.js"></script>
+        <script src="javascript/script.js"></script>
     </body>
     </html>

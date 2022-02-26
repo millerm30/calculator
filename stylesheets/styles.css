@@ -18,17 +18,29 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 25px 35px;
+    padding: 25px 25px;
     border-radius: 10px;
     user-select: none;
 }
 
+.header_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
 h4 {
-    padding: 0;
+    padding: 0 5px;
     margin: 0;
     text-align: center;
     color: #ffffff;
     text-transform: uppercase;
+}
+
+.appName {
+    font-weight: lighter;
+    font-style: italic;
 }
 
 #Display-area {
@@ -39,7 +51,7 @@ h4 {
     grid-template-rows: repeat(2, minmax(40px, auto));
     word-wrap: break-word;
     padding-bottom: 20px;
-    border-bottom: 1px #f5e5e51e solid;
+    border-bottom: 1px #f5e5e591 solid;
 }
 
 #Display-area .currentInput {
