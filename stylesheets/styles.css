@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-    background-color: #131313;
+    background-color: #E9EbEE;
     max-width: 300px;
     height: auto;
     display: flex;
@@ -21,6 +21,7 @@ body {
     padding: 25px 25px;
     border-radius: 10px;
     user-select: none;
+    box-shadow: 0px 0px 10px 2px #000;
 }
 
 .header_content {
@@ -30,12 +31,19 @@ body {
   width: 100%;
 }
 
+.header_content img {
+    border: 1px solid #0000002c;
+}
+
 h4 {
     padding: 0 5px;
     margin: 0;
     text-align: center;
-    color: #ffffff;
+    color: #000;
     text-transform: uppercase;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    border-radius: 5px;
 }
 
 .appName {
@@ -50,8 +58,10 @@ h4 {
     grid-template-columns: 100%;
     grid-template-rows: repeat(2, minmax(40px, auto));
     word-wrap: break-word;
-    padding-bottom: 20px;
-    border-bottom: 1px #f5e5e591 solid;
+    padding: 0 5px 10px 0;
+    border: 2px solid #f5e5e591;
+    border-radius: 10px;
+    background-color: #4268b3;
 }
 
 #Display-area .currentInput {
@@ -73,7 +83,7 @@ h4 {
 
 .keypad-btns {
     display: grid;
-    grid: repeat(5, 50px) / repeat(4, 50px);
+    grid: repeat(5, 60px) / repeat(4, 60px);
     grid-row-gap: 20px;
     grid-column-gap: 20px;
 }
@@ -82,23 +92,29 @@ h4 {
     outline: none;
     border: none;
     border-radius: 10px;
-    background-color: #131313;
-    color: #ffffff;
+    background-color: #f8f8f8;
+    color: #000;
     font-size: x-large;
+    border: 2px solid #ccc;
+    box-shadow: 0px 0px 3px 1px #000;
 }
 
 .keypad-btns .fun_btn {
     color: #ff8800;
 }
 
+.keypad-btns #clear {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
 .num_btn:hover,
 .fun_btn:hover {
-    background-color: #1d1d1dfa;
+    background-color: #00000000;
 }
 
 @media only screen and (max-width: 600px) {
     body {
-        background-color: #131313;
         align-items: flex-start;
     }
 }
