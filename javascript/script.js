@@ -20,7 +20,7 @@ clearbtn.addEventListener("click", () => {
   answerScreen.innerHTML = 0;
   currentInput.className = "currentInput";
   answerScreen.className = "answerScreen";
-  answerScreen.style.color = " rgba(150, 150, 150, 0.87)";
+  answerScreen.style.color = " rgb(255, 255, 255)";
 });
 
 // Get value of any button clicked and display to the screen
