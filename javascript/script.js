@@ -5,7 +5,6 @@
 let currentInput = document.querySelector(".currentInput");
 let answerScreen = document.querySelector(".answerScreen");
 let buttons = document.querySelectorAll("button");
-let erasebtn = document.querySelector("#erase");
 let clearbtn = document.querySelector("#clear");
 let evaluate = document.querySelector("#evaluate");
 
@@ -20,7 +19,6 @@ clearbtn.addEventListener("click", () => {
   answerScreen.innerHTML = 0;
   currentInput.className = "currentInput";
   answerScreen.className = "answerScreen";
-  answerScreen.style.color = " rgb(255, 255, 255)";
 });
 
 // Get value of any button clicked and display to the screen
@@ -28,7 +26,7 @@ clearbtn.addEventListener("click", () => {
 buttons.forEach((btn) => {
   btn.addEventListener("click", () => {
     // when clicked button is not clear button
-    if (!btn.id.match("erase")) {
+    if (!btn.id.match("button")) {
       // To display value on btn press
       realTimeScreenValue.push(btn.value);
       currentInput.innerHTML = realTimeScreenValue.join("");
@@ -41,9 +39,8 @@ buttons.forEach((btn) => {
 
     // When clicked button is evaluate button
     if (btn.id.match("evaluate")) {
-      currentInput.className = "answerScreen";
       answerScreen.className = "currentInput";
-      answerScreen.style.color = "white";
+      currentInput.className = "answerScreen";
     }
   });
 });
