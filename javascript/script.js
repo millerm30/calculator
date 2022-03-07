@@ -1,51 +1,113 @@
-'use strict';
+"use strict";
 
-// Variables
+const calculator = {
+  displayValue: "0",
+  firstOperand: null,
+  waitingForSecondOperand: false,
+  operator: null,
+};
 
-let currentInput = document.querySelector('.currentInput');
-let answerScreen = document.querySelector('.answerScreen');
-let buttons = document.querySelectorAll('button');
-let clearbtn = document.querySelector('#clear');
-let evaluate = document.querySelector('#evaluate');
+function inputDigit(digit) {
+  const { displayValue, waitingForSecondOperand } = calculator;
 
+  if (waitingForSecondOperand === true) {
+    calculator.displayValue = digit;
+    calculator.waitingForSecondOperand = false;
+  } else {
+    calculator.displayValue =
+      displayValue === "0" ? digit : displayValue + digit;
+  }
+}
 
-// Calculator Display
+function inputDecimal(dot) {
+  if (calculator.waitingForSecondOperand === true) {
+    calculator.displayValue = "0.";
+    calculator.waitingForSecondOperand = false;
+    return;
+  }
 
-let realTimeScreenValue = [];
+  if (!calculator.displayValue.includes(dot)) {
+    calculator.displayValue += dot;
+  }
+}
 
-// To Clear
+function handleOperator(nextOperator) {
+  const { firstOperand, displayValue, operator } = calculator;
+  const inputValue = parseFloat(displayValue);
 
-clearbtn.addEventListener('click', () => {
-  realTimeScreenValue = [''];
-  answerScreen.innerHTML = 0;
-  currentInput.className = 'currentInput';
-  answerScreen.className = 'answerScreen';
-});
+  if (operator && calculator.waitingForSecondOperand) {
+    calculator.operator = nextOperator;
+    return;
+  }
 
-// Get value of any button clicked and display to the screen
+  if (firstOperand == null && !isNaN(inputValue)) {
+    calculator.firstOperand = inputValue;
+  } else if (operator) {
+    const result = calculate(firstOperand, inputValue, operator);
 
-buttons.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    // when clicked button is not clear button
-    if (!btn.id.match('button')) {
-      // To display value on btn press
-      realTimeScreenValue.push(btn.value);
-      currentInput.innerHTML = realTimeScreenValue.join('');
+    calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
+    calculator.firstOperand = result;
+  }
 
-      // To evaluate answer in real time
-      if (btn.classList.contains('num_btn')) {
-        answerScreen.innerHTML = eval(realTimeScreenValue.join(''));
+  calculator.waitingForSecondOperand = true;
+  calculator.operator = nextOperator;
+}
+
+function calculate(firstOperand, secondOperand, operator) {
+  if (operator === "+") {
+    return firstOperand + secondOperand;
+  } else if (operator === "-") {
+    return firstOperand - secondOperand;
+  } else if (operator === "*") {
+    return firstOperand * secondOperand;
+  } else if (operator === "/") {
+    return firstOperand / secondOperand;
+  }
+
+  return secondOperand;
+}
+
+function resetCalculator() {
+  calculator.displayValue = "0";
+  calculator.firstOperand = null;
+  calculator.waitingForSecondOperand = false;
+  calculator.operator = null;
+}
+
+function updateDisplay() {
+  const display = document.querySelector(".calculator-screen");
+  display.value = calculator.displayValue;
+}
+
+updateDisplay();
+
+const keys = document.querySelector(".calculator-keys");
+keys.addEventListener("click", (event) => {
+  const { target } = event;
+  const { value } = target;
+  if (!target.matches("button")) {
+    return;
+  }
+
+  switch (value) {
+    case "+":
+    case "-":
+    case "*":
+    case "/":
+    case "=":
+      handleOperator(value);
+      break;
+    case ".":
+      inputDecimal(value);
+      break;
+    case "all-clear":
+      resetCalculator();
+      break;
+    default:
+      if (Number.isInteger(parseFloat(value))) {
+        inputDigit(value);
       }
-    }
+  }
 
-    // When clicked button is evaluate button
-    if (btn.id.match('evaluate')) {
-      answerScreen.className = 'currentInput';
-      currentInput.className = 'answerScreen';
-    }
-  });
-});
-
-document.addEventListener('keydown', funtion (e) {
-
+  updateDisplay();
 });
