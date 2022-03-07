@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
 const calculator = {
-  displayValue: "0",
+  displayValue: '0',
   firstOperand: null,
   waitingForSecondOperand: false,
   operator: null,
@@ -15,13 +15,13 @@ function inputDigit(digit) {
     calculator.waitingForSecondOperand = false;
   } else {
     calculator.displayValue =
-      displayValue === "0" ? digit : displayValue + digit;
+      displayValue === '0' ? digit : displayValue + digit;
   }
 }
 
 function inputDecimal(dot) {
   if (calculator.waitingForSecondOperand === true) {
-    calculator.displayValue = "0.";
+    calculator.displayValue = '0.';
     calculator.waitingForSecondOperand = false;
     return;
   }
@@ -54,13 +54,13 @@ function handleOperator(nextOperator) {
 }
 
 function calculate(firstOperand, secondOperand, operator) {
-  if (operator === "+") {
+  if (operator === '+') {
     return firstOperand + secondOperand;
-  } else if (operator === "-") {
+  } else if (operator === '-') {
     return firstOperand - secondOperand;
-  } else if (operator === "*") {
+  } else if (operator === '*') {
     return firstOperand * secondOperand;
-  } else if (operator === "/") {
+  } else if (operator === '/') {
     return firstOperand / secondOperand;
   }
 
@@ -68,39 +68,39 @@ function calculate(firstOperand, secondOperand, operator) {
 }
 
 function resetCalculator() {
-  calculator.displayValue = "0";
+  calculator.displayValue = '0';
   calculator.firstOperand = null;
   calculator.waitingForSecondOperand = false;
   calculator.operator = null;
 }
 
 function updateDisplay() {
-  const display = document.querySelector(".calculator-screen");
+  const display = document.querySelector('.calculator-screen');
   display.value = calculator.displayValue;
 }
 
 updateDisplay();
 
-const keys = document.querySelector(".calculator-keys");
-keys.addEventListener("click", (event) => {
+const keys = document.querySelector('.calculator-keys');
+keys.addEventListener('click', (event) => {
   const { target } = event;
   const { value } = target;
-  if (!target.matches("button")) {
+  if (!target.matches('button')) {
     return;
   }
 
   switch (value) {
-    case "+":
-    case "-":
-    case "*":
-    case "/":
-    case "=":
+    case '+':
+    case '-':
+    case '*':
+    case '/':
+    case '=':
       handleOperator(value);
       break;
-    case ".":
+    case '.':
       inputDecimal(value);
       break;
-    case "all-clear":
+    case 'all-clear':
       resetCalculator();
       break;
     default:
