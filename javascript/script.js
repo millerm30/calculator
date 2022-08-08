@@ -29,7 +29,7 @@ function inputDecimal(dot) {
   if (!calculator.displayValue.includes(dot)) {
     calculator.displayValue += dot;
   }
-}
+};
 
 function handleOperator(nextOperator) {
   const { firstOperand, displayValue, operator } = calculator;
@@ -51,7 +51,7 @@ function handleOperator(nextOperator) {
 
   calculator.waitingForSecondOperand = true;
   calculator.operator = nextOperator;
-}
+};
 
 function calculate(firstOperand, secondOperand, operator) {
   if (operator === '+') {
@@ -65,19 +65,19 @@ function calculate(firstOperand, secondOperand, operator) {
   }
 
   return secondOperand;
-}
+};
 
 function resetCalculator() {
   calculator.displayValue = '0';
   calculator.firstOperand = null;
   calculator.waitingForSecondOperand = false;
   calculator.operator = null;
-}
+};
 
 function updateDisplay() {
   const display = document.querySelector('.calculator-screen');
   display.value = calculator.displayValue;
-}
+};
 
 updateDisplay();
 
@@ -107,7 +107,7 @@ keys.addEventListener('click', (event) => {
       if (Number.isInteger(parseFloat(value))) {
         inputDigit(value);
       }
-  }
+  };
 
   updateDisplay();
 });
